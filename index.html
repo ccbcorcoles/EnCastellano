@@ -81,7 +81,7 @@ var focus = svg.append("g")
 var context = svg.append("g")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-d3.csv("s&p500.csv", function(data) {
+d3.csv("sp500.csv", function(data) {
 
   data.forEach(function(d) {
     d.date = formatDate.parse(d.date);
