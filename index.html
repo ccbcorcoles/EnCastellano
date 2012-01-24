@@ -49,9 +49,7 @@ var xAxis = d3.svg.axis().scale(x).orient("bottom"),
 
 var brush = d3.svg.brush()
     .x(x2)
-    .on("brushstart", brushstart)
-    .on("brush", brush)
-    .on("brushend", brushend);
+    .on("brush", brush);
 
 var area = d3.svg.area()
     .interpolate("monotone")
@@ -90,7 +88,6 @@ d3.csv("sp500.csv", function(data) {
 
   x.domain(d3.extent(data.map(function(d) { return d.date; })));
   y.domain([0, d3.max(data.map(function(d) { return d.price; }))]);
-
   x2.domain(x.domain());
   y2.domain(y.domain());
 
@@ -125,18 +122,10 @@ d3.csv("sp500.csv", function(data) {
       .attr("height", height2 + 7);
 });
 
-function brushstart() {
-  svg.classed("selecting", true);
-}
-
 function brush() {
   x.domain(brush.empty() ? x2.domain() : brush.extent());
   focus.select("path").attr("d", area);
   focus.select(".x.axis").call(xAxis);
-}
-
-function brushend() {
-  svg.classed("selecting", brush.empty());
 }
 
     </script>
