@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<script src="http://mbostock.github.com/d3/d3.js?2.7.2"></script>
-<script src="http://mbostock.github.com/d3/d3.csv.js?2.7.2"></script>
-<script src="http://mbostock.github.com/d3/d3.time.js?2.7.2"></script>
 <style>
 
 svg {
@@ -13,7 +10,8 @@ path {
   fill: steelblue;
 }
 
-.axis path, .axis line {
+.axis path,
+.axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
@@ -25,9 +23,9 @@ path {
   shape-rendering: crispEdges;
 }
 
-
 </style>
 <body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var margin = {top: 10, right: 10, bottom: 100, left: 40},
@@ -92,7 +90,7 @@ d3.csv("sp500.csv", function(data) {
   y2.domain(y.domain());
 
   focus.append("path")
-      .data([data])
+      .datum(data)
       .attr("clip-path", "url(#clip)")
       .attr("d", area);
 
@@ -106,7 +104,7 @@ d3.csv("sp500.csv", function(data) {
       .call(yAxis);
 
   context.append("path")
-      .data([data])
+      .datum(data)
       .attr("d", area2);
 
   context.append("g")
@@ -128,6 +126,4 @@ function brush() {
   focus.select(".x.axis").call(xAxis);
 }
 
-    </script>
-  </body>
-</html>
+</script>
