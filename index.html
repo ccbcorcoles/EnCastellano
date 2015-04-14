@@ -26,7 +26,7 @@ svg {
 
 </style>
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://www.carloscorcoles.com/experimento/d3.v3.min.js"></script>
 <script>
 
 var margin = {top: 10, right: 10, bottom: 100, left: 40},
@@ -80,7 +80,7 @@ var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-d3.csv("sp500.csv", type, function(error, data) {
+d3.csv("sp501.csv", type, function(error, data) {
   x.domain(d3.extent(data.map(function(d) { return d.date; })));
   y.domain([0, d3.max(data.map(function(d) { return d.price; }))]);
   x2.domain(x.domain());
@@ -131,3 +131,4 @@ function type(d) {
 }
 
 </script>
+
